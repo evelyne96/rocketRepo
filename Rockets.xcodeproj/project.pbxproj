@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB4A779725E31C060024B407 /* RocketDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4A779625E31C060024B407 /* RocketDetailView.swift */; };
+		DB801CBD25E309B300A751A6 /* RocketListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB801CBC25E309B300A751A6 /* RocketListViewModel.swift */; };
+		DB801CC225E30A0300A751A6 /* RocketRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB801CC125E30A0300A751A6 /* RocketRowView.swift */; };
+		DB801CD025E311FB00A751A6 /* RocketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB801CCF25E311FB00A751A6 /* RocketViewModel.swift */; };
 		DBD4652E25E145C3000D6C12 /* RocketsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD4652D25E145C3000D6C12 /* RocketsApp.swift */; };
 		DBD4653025E145C3000D6C12 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD4652F25E145C3000D6C12 /* ContentView.swift */; };
 		DBD4653225E145C4000D6C12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBD4653125E145C4000D6C12 /* Assets.xcassets */; };
@@ -42,6 +46,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DB4A779625E31C060024B407 /* RocketDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketDetailView.swift; sourceTree = "<group>"; };
+		DB801CBC25E309B300A751A6 /* RocketListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketListViewModel.swift; sourceTree = "<group>"; };
+		DB801CC125E30A0300A751A6 /* RocketRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketRowView.swift; sourceTree = "<group>"; };
+		DB801CCF25E311FB00A751A6 /* RocketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketViewModel.swift; sourceTree = "<group>"; };
 		DBD4652A25E145C3000D6C12 /* Rockets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rockets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBD4652D25E145C3000D6C12 /* RocketsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketsApp.swift; sourceTree = "<group>"; };
 		DBD4652F25E145C3000D6C12 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -113,6 +121,7 @@
 		DBD4652C25E145C3000D6C12 /* Rockets */ = {
 			isa = PBXGroup;
 			children = (
+				DBD465B925E1CF52000D6C12 /* RocketFeature */,
 				DBD4659C25E1B3AD000D6C12 /* ImageLoader */,
 				DBD4656125E14AAD000D6C12 /* RocketLoader */,
 				DBD4652D25E145C3000D6C12 /* RocketsApp.swift */,
@@ -154,7 +163,6 @@
 		DBD4656125E14AAD000D6C12 /* RocketLoader */ = {
 			isa = PBXGroup;
 			children = (
-				DBD4657025E19D2C000D6C12 /* Rocket.swift */,
 				DBD4656225E14AD8000D6C12 /* RocketDataLoader.swift */,
 				DBD4657E25E19E56000D6C12 /* RocketAPIClient.swift */,
 			);
@@ -178,6 +186,18 @@
 				DBD465A625E1B835000D6C12 /* ImageDownloadOperation.swift */,
 			);
 			path = ImageLoader;
+			sourceTree = "<group>";
+		};
+		DBD465B925E1CF52000D6C12 /* RocketFeature */ = {
+			isa = PBXGroup;
+			children = (
+				DBD4657025E19D2C000D6C12 /* Rocket.swift */,
+				DB801CCF25E311FB00A751A6 /* RocketViewModel.swift */,
+				DB801CBC25E309B300A751A6 /* RocketListViewModel.swift */,
+				DB801CC125E30A0300A751A6 /* RocketRowView.swift */,
+				DB4A779625E31C060024B407 /* RocketDetailView.swift */,
+			);
+			path = RocketFeature;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,9 +335,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB801CBD25E309B300A751A6 /* RocketListViewModel.swift in Sources */,
 				DBD4656325E14AD8000D6C12 /* RocketDataLoader.swift in Sources */,
 				DBD465AC25E1BAA5000D6C12 /* AsyncOperation.swift in Sources */,
+				DB801CC225E30A0300A751A6 /* RocketRowView.swift in Sources */,
+				DB801CD025E311FB00A751A6 /* RocketViewModel.swift in Sources */,
 				DBD4653025E145C3000D6C12 /* ContentView.swift in Sources */,
+				DB4A779725E31C060024B407 /* RocketDetailView.swift in Sources */,
 				DBD4657625E19D7D000D6C12 /* SwiftExtensions.swift in Sources */,
 				DBD465A725E1B835000D6C12 /* ImageDownloadOperation.swift in Sources */,
 				DBD4652E25E145C3000D6C12 /* RocketsApp.swift in Sources */,
