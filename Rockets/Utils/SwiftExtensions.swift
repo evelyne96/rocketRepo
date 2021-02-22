@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 extension DateFormatter {
   static let iso8601: DateFormatter = {
@@ -16,4 +17,14 @@ extension DateFormatter {
     formatter.locale = Locale(identifier: "en_US_POSIX")
     return formatter
   }()
+}
+
+extension Font {
+    static var rocketDetailFont: Font {
+        return Font.system(size: 14)
+    }
+    
+    static var rocketTitleFont: Font {
+        return Font.system(size: 18)
+    }
 }
