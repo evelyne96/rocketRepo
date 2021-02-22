@@ -27,7 +27,7 @@ class AsyncOperation: Operation {
         }
     }
     
-    private(set) executeCompleted: (() -> Void)?
+    private(set) var executeCompleted: (() -> Void)?
     
     override init() {
         super.init()
