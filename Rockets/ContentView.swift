@@ -8,9 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var viewModel = RocketListViewModel()
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            List(viewModel.rockets, id: \.self) { rocket in
+                NavigationLink(destination: RocketDetailView(rocketVM: rocket)) {
+                    RocketRowView(rocketVM: rocket)
+                }
+            }.navigationBarTitle("Rockets")
+            .onAppear {
+                viewModel.fetchRocketsData()
+            }
+        }
     }
 }
 
