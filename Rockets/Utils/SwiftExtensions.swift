@@ -19,6 +19,18 @@ extension DateFormatter {
   }()
 }
 
+
+extension Date {
+    func httpFormattedString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.dateFormat = "EEE, dd MMM yyyy HH:mm:ss zzz"
+        
+        return dateFormatter.string(from: self)
+    }
+}
+
 extension Font {
     static var rocketDetailFont: Font {
         return Font.system(size: 14)

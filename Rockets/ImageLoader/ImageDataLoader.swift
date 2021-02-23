@@ -14,7 +14,7 @@ class ImageDataLoader: ImageAPIClient {
                            lastModified: Date?,
                            completion: @escaping (ImageLoaderResult) -> Void) -> Request {
         
-        let request = AF.request(url, headers: HTTPHeaders.lastModifiedHeaders(for: lastModified))
+        let request = AF.request(url, headers: HTTPHeaders.ifModifiedSinceHeaders(for: lastModified))
         request.validate(statusCode: 200..<300).responseData { response in
             switch response.result {
             case .success(let imageData):

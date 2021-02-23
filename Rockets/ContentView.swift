@@ -6,19 +6,12 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ContentView: View {
-    @ObservedObject var viewModel = RocketListViewModel()
     var body: some View {
         NavigationView {
-            List(viewModel.rockets, id: \.self) { rocket in
-                NavigationLink(destination: RocketDetailView(rocketVM: rocket)) {
-                    RocketRowView(rocketVM: rocket)
-                }
-            }.navigationBarTitle("Rockets")
-            .onAppear {
-                viewModel.fetchRocketsData()
-            }
+            RocketListView()
         }
     }
 }

@@ -33,7 +33,7 @@ class RocketViewModel: ObservableObject {
     }
     
     var firstFlight: String {
-        return DateFormatter.iso8601.string(from: rocket.firstFlight)
+        return DateFormatter.iso8601.string(from: rocket.firstFlightDate)
     }
     
     var description: String {

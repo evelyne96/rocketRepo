@@ -8,9 +8,9 @@
 import Foundation
 
 struct Rocket: Decodable, Hashable {
-    let active: Bool
+    let isActive: Bool
     let successRate: Int
-    let firstFlight: Date
+    let firstFlightDate: Date
     let costPerLaunch: Int
     let country: String
     let wikipediaURL: URL
@@ -20,9 +20,9 @@ struct Rocket: Decodable, Hashable {
     let imageURLs: [URL]
     
     enum CodingKeys: String, CodingKey {
-        case active = "active"
+        case isActive = "active"
         case successRate = "success_rate_pct"
-        case firstFlight = "first_flight"
+        case firstFlightDate = "first_flight"
         case costPerLaunch = "cost_per_launch"
         case country = "country"
         case wikipediaURL = "wikipedia"

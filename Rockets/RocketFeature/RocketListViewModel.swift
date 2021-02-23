@@ -6,30 +6,34 @@
 //
 
 import Foundation
+import CoreData
 
 class RocketListViewModel: ObservableObject {
-    private let rocketApiEndpoint = "https://api.spacexdata.com/v3/rockets"
-    private let rocketAPI: RocketDataLoader
+    private let rocketAPI: RocketAPIClient
+    private let cacheAPI: RocketCacheClient
     private let pendingOperations: PendingImageOperations
     
-    @Published var rockets: [RocketViewModel]
+    @Published var rocketVMs: [RocketViewModel]
     
-    init() {
-        self.rockets = []
-        self.rocketAPI = RocketDataLoader(url: URL(string: rocketApiEndpoint)!)
+    init(rocketAPI: RocketAPIClient, cacheAPI: RocketCacheClient) {
+        self.rocketAPI = rocketAPI
+        self.cacheAPI = cacheAPI
+        self.rocketVMs = []
         self.pendingOperations = PendingImageOperations()
     }
     
     func fetchRocketsData() {
-        rocketAPI.fetchRockets(lastModified: nil, progressCallback: {_ in }) { [weak self] result in
+        let (cachedRockets, lastModified) = self.cacheAPI.fetchRockets()
+        
+        rocketAPI.fetchRockets(lastModified: lastModified, progressCallback: {_ in }) { [weak self] result in
             switch result {
             case .success(let rockets):
-                self?.rockets = rockets.map { RocketViewModel(rocket: $0) }
-                self?.rockets.forEach { self?.fetchImage(for: $0) }
-                // TODO: cache data
+                self?.cacheAPI.deleteCache()
+                self?.cacheAPI.cacheRockets(rockets: rockets, timestamp: Date())
+                self?.rocketVMs = rockets.map { RocketViewModel(rocket: $0) }
+                self?.rocketVMs.forEach { self?.fetchImage(for: $0) }
             case .failure(_):
-                // TODO: call for cached data
-                break
+                self?.rocketVMs = cachedRockets.map { RocketViewModel(rocket: $0) }
             }
         }
     }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Rocket" representedClassName="RocketMO" syncable="YES">
+        <attribute name="active" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="costPerLaunch" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="country" attributeType="String"/>
+        <attribute name="entryDescription" attributeType="String"/>
+        <attribute name="firstFlightDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="successRate" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="wikipediaURL" attributeType="URI"/>
+        <relationship name="feed" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RocketFeed" inverseName="rockets" inverseEntity="RocketFeed"/>
+    </entity>
+    <entity name="RocketFeed" representedClassName="RocketFeedMO" syncable="YES">
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="rockets" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Rocket" inverseName="feed" inverseEntity="Rocket"/>
+    </entity>
+    <entity name="RocketImage" representedClassName="RocketImage" syncable="YES">
+        <attribute name="localURL" optional="YES" attributeType="URI"/>
+        <attribute name="url" attributeType="URI"/>
+    </entity>
+    <elements>
+        <element name="Rocket" positionX="-63" positionY="-18" width="128" height="193"/>
+        <element name="RocketFeed" positionX="-54" positionY="54" width="128" height="73"/>
+        <element name="RocketImage" positionX="-54" positionY="-9" width="128" height="73"/>
+    </elements>
+</model>

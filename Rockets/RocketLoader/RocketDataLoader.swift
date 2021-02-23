@@ -10,8 +10,8 @@ import Alamofire
 import UIKit
 
 extension HTTPHeaders {
-    static func lastModifiedHeaders(for lastModified: Date?) -> HTTPHeaders? {
-        return lastModified != nil ? HTTPHeaders([HTTPHeader(name: "last-modified", value: lastModified!.description)]) : nil
+    static func ifModifiedSinceHeaders(for lastModified: Date?) -> HTTPHeaders? {
+        return lastModified != nil ? HTTPHeaders([HTTPHeader(name: "If-Modified-Since", value: lastModified!.httpFormattedString())]) : nil
     }
 }
 
@@ -25,7 +25,7 @@ class RocketDataLoader: RocketAPIClient {
                       progressCallback: @escaping (Progress) -> Void,
                       completion: @escaping (RocketLoaderResult) -> Void) {
         
-        let request = AF.request(url, headers: HTTPHeaders.lastModifiedHeaders(for: lastModified))
+        let request = AF.request(url, headers: HTTPHeaders.ifModifiedSinceHeaders(for: lastModified))
         request.validate(statusCode: 200..<300)
         .downloadProgress(closure: { (progress) in
             progressCallback(progress)
