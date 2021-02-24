@@ -26,7 +26,7 @@ class RocketDataLoader: RocketAPIClient {
                       completion: @escaping (RocketLoaderResult) -> Void) {
         
         let request = AF.request(url, headers: HTTPHeaders.ifModifiedSinceHeaders(for: lastModified))
-        request.validate(statusCode: 200..<300)
+        request.validate(statusCode: 200..<304)
         .downloadProgress(closure: { (progress) in
             progressCallback(progress)
         }).responseDecodable(of: [Rocket].self, decoder: jsonDecoder()) { response in

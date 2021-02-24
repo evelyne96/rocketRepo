@@ -17,14 +17,13 @@ protocol RocketCacheClient: class {
 
 // TODO: Error handling???
 // TODO: Image caching
-class RocketCacheDataLoader: RocketCacheClient {
+class RocketCacheDataLoader {
     private var rocketEntityName = "Rocket"
-    
-    var moc: NSManagedObjectContext {
-        return  persistentContainer.viewContext
+    private var moc: NSManagedObjectContext {
+        return  persistentContainer.viewContext // TODO: Use background context instead + cache client should support background cache
     }
     
-    var persistentContainer: NSPersistentContainer = {
+    private var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "RocketModel")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
@@ -34,6 +33,9 @@ class RocketCacheDataLoader: RocketCacheClient {
         return container
     }()
     
+}
+
+extension RocketCacheDataLoader: RocketCacheClient {
     func cacheRockets(rockets: [Rocket], timestamp: Date) {
         createRocketFeed(rockets, timestamp)
         try? moc.save()
@@ -64,7 +66,7 @@ class RocketCacheDataLoader: RocketCacheClient {
     }
     
     private func retrieveRocketFeed() -> RocketFeedMO? {
-        let request = NSFetchRequest<RocketFeedMO>(entityName: "RocketFeed")
+        let request = RocketFeedMO.fetchRequestMO()
         return try? self.moc.fetch(request).first
     }
 }

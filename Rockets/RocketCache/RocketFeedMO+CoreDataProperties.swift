@@ -12,7 +12,7 @@ import CoreData
 
 extension RocketFeedMO {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<RocketFeedMO> {
+    @nonobjc public class func fetchRequestMO() -> NSFetchRequest<RocketFeedMO> {
         return NSFetchRequest<RocketFeedMO>(entityName: "RocketFeed")
     }
 
